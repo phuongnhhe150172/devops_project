@@ -37,9 +37,9 @@ pipeline {
                 sh 'echo y | docker container prune '
                 sh 'docker volume rm phuongnhhe150172-mysql-data || echo "no volume"'
 
-                sh "docker run --name phuongnhhe150172-mysql --rm --network dev -v phuongnhhe150172-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=db_example  -d mysql:8.0 "
+                sh "docker run --name phuongnhhe150172-mysql --rm --network dev -v phuongnhhe150172-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=db_example  -d mysql:8.0 "
                 sh 'sleep 20'
-                sh "docker exec -i phuongnhhe150172-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN_PSW} < script"
+                sh "docker exec -i phuongnhhe150172-mysql mysql --user=root --password=123456 < script"
             }
         }
 
